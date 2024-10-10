@@ -6,8 +6,9 @@ public class Usuario{
     private String email;
     private String senha;
 
-    private Integer id_Pessoa;
+    private Pessoa pessoa;
 
+    
     public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;
@@ -39,12 +40,12 @@ public class Usuario{
         this.senha = senha;
     }
     
-    public int getId_Pessoa() {
-        return id_Pessoa;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
-    
-    public void setId_Pessoa(int id_Pessoa) {
-        this.id_Pessoa = id_Pessoa;
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
     
     @Override

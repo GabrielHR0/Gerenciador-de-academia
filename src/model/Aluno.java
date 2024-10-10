@@ -11,6 +11,5 @@ public class Aluno extends Pessoa{
     private Long matricula;
     private LocalDate dataMatricula; 
 
-    //assonições ...
     
 }
