@@ -7,10 +7,18 @@ import repository.UsuarioRepository;
 
 public class UsuarioService {
     
-    private UsuarioRepository usuarioRepository;
+    private static UsuarioService instancia;
+    private final UsuarioRepository usuarioRepository;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    private UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
+    }
+
+    public static UsuarioService getInstancia() {
+        if (instancia == null) {
+            instancia = new UsuarioService(UsuarioRepository.getInstancia());
+        }
+        return instancia;
     }
 
     public Usuario cadastrarUsuario(String email, String senha) {

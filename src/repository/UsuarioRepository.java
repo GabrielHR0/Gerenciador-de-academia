@@ -8,11 +8,23 @@ import java.util.Map;
 import model.Usuario;
 
 public class UsuarioRepository {
-    
+
+
+    private static UsuarioRepository instancia;
+
     private Map<Integer, Usuario> usuarios = new HashMap<>();
     private Integer usuarioId = 1;
 
-    public UsuarioRepository() {
+    private UsuarioRepository() {
+        
+    }
+
+    public static UsuarioRepository getInstancia(){
+        
+        if (instancia == null){
+            instancia = new UsuarioRepository();
+        }
+        return instancia;
 
     }
 

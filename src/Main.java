@@ -1,20 +1,13 @@
 import controller.UsuarioController;
-import repository.UsuarioRepository;
-import service.UsuarioService;
+
 import model.Usuario;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // Criando o repositório de usuários
-        UsuarioRepository usuarioRepository = new UsuarioRepository();
 
-        // Criando o serviço de usuários, que utiliza o repositório
-        UsuarioService usuarioService = new UsuarioService(usuarioRepository);
-
-        // Criando o controller, que utiliza o serviço
-        UsuarioController usuarioController = new UsuarioController(usuarioService);
+        UsuarioController usuarioController = UsuarioController.getInstancia();
 
         // Testando o cadastro de um novo usuário
         System.out.println("=== Teste: Cadastro de Usuário ===");

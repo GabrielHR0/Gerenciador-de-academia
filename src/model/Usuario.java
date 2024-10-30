@@ -8,7 +8,6 @@ public class Usuario{
 
     private Pessoa pessoa;
 
-    
     public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;
@@ -54,7 +53,6 @@ public class Usuario{
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
-                ", id_Pessoa=" + id_Pessoa +
                 '}';
     }
 }

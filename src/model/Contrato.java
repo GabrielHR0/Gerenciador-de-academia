@@ -67,9 +67,6 @@ public class Contrato {
                ", planoAssinatura=" + planoAssinatura +
                ", dataInicio=" + dataInicio +
                ", dataFim=" + dataFim +
-               ", status='" + status + '\'' +
                '}';
     }
-}
-
 }

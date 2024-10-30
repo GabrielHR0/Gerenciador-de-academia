@@ -8,10 +8,18 @@ import service.UsuarioService;
 
 public class UsuarioController {
     
-    private UsuarioService usuarioService;
+    private static UsuarioController instancia;
+    private final UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService usuarioService) {
+    private UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
+    }
+
+    public static UsuarioController getInstancia(){
+        if (instancia == null){
+            instancia = new UsuarioController(UsuarioService.getInstancia());
+        }
+        return instancia;
     }
 
     public Usuario cadastrar(String email, String senha) {
