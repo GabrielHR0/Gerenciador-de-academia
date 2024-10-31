@@ -20,7 +20,7 @@ public class AlunoRepository {
     public Aluno salvar(Aluno novoAluno){
 
         novoAluno.setId(this.alunoId++);
-        alunos.put(alunoId, novoAluno);
+        alunos.put(novoAluno.getId(), novoAluno);
 
         return novoAluno;
     }

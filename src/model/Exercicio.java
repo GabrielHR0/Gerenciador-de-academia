@@ -5,6 +5,7 @@ public class Exercicio {
     private TipoExercicio tipoExercicio;
     private int repeticoes;
     private int series;
+    private Integer exercicioId;
 
     public Exercicio(TipoExercicio tipoExercicio, int repeticoes, int series){
         this.tipoExercicio = tipoExercicio;
@@ -35,5 +36,14 @@ public class Exercicio {
     public void setSeries(int series) {
         this.series = series;
     }
+
+    public Integer getId() {
+        return exercicioId;
+    }
+
+    public void setId(Integer id) {
+        this.exercicioId = id;
+    }
+
     
 }
