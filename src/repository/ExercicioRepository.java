@@ -33,8 +33,14 @@ public class ExercicioRepository {
         return exercicios.remove(id);
     }
 
-    public void editar(){
-        // mudar serie e repeticoes
+    public Exercicio editar(Integer id, int repeticoes, int series){
+        if(existe(id)){
+            Exercicio exercicioEditado = exercicios.get(id);
+            exercicioEditado.setRepeticoes(repeticoes);
+            exercicioEditado.setSeries(series);
+            return exercicioEditado;
+        }
+        return null;
     }
 
     public Exercicio buscarExercicioporId(Integer id){

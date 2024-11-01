@@ -1,44 +1,71 @@
-
 import controller.ExercicioController;
+import controller.TreinoController;
 import model.Exercicio;
+import model.Instrutor;
 import model.TipoExercicio;
+import model.Treino;
 import service.ExercicioService;
+import service.TreinoService;
 
+import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        // Instancia o controlador de exercício
-        ExercicioController exercicioController = ExercicioController.getInstancia();
+        // Instanciando o controlador de Treino
+        TreinoController treinoController = TreinoController.getInstancia();
 
-        // Define um tipo de exercício (exemplo)
-        TipoExercicio tipoExercicio = new TipoExercicio("Agachamento", "Pernas");
+        // Criando dados para o treino
+        String nomeTreino1 = "Treino de Força";
+        String descricaoTreino1 = "Foco em ganho de força muscular";
+        List<Exercicio> exerciciosTreino1 = new ArrayList<>(); // Lista de exercícios (pode adicionar alguns se já tiver)
+        Instrutor instrutor1 = new Instrutor("Carlos Silva", "1252422", "849847", "carlos@exemplo.com");
+        Date diaTreino1 = new Date();
 
-        // Teste de cadastro
-        System.out.println("Testando cadastro de exercício:");
-        Exercicio exercicio1 = exercicioController.cadastrar(tipoExercicio, 10, 3);
-        Exercicio exercicio2 = exercicioController.cadastrar(tipoExercicio, 15, 4);
-        System.out.println("Exercício 1 cadastrado: " + exercicio1.getId() + " - Repetições: " + exercicio1.getRepeticoes() + ", Séries: " + exercicio1.getSeries());
-        System.out.println("Exercício 2 cadastrado: " + exercicio2.getId() + " - Repetições: " + exercicio2.getRepeticoes() + ", Séries: " + exercicio2.getSeries());
-
-        // Teste de buscarTodos
-        System.out.println("\nTestando busca de todos os exercícios:");
-        List<Exercicio> todosExercicios = exercicioController.buscarTodos();
-        for (Exercicio e : todosExercicios) {
-            System.out.println("Exercício ID: " + e.getId() + " - Tipo: " + e.getTipoExercicio().getNome() + " - Repetições: " + e.getRepeticoes() + ", Séries: " + e.getSeries());
+        // Cadastrando o primeiro treino
+        Treino treino1 = treinoController.cadastrar(nomeTreino1, descricaoTreino1, exerciciosTreino1, instrutor1, diaTreino1);
+        if (treino1 != null) {
+            System.out.println("Treino cadastrado com sucesso: " + treino1.getNome());
+        } else {
+            System.out.println("Erro ao cadastrar o treino.");
         }
 
-        // Teste de deletar
-        System.out.println("\nTestando exclusão de exercício:");
-        boolean deletado = ExercicioService.getInstancia().deletarExercicio(exercicio1.getId()) != null;
-        System.out.println("Exercício ID " + exercicio1.getId() + " deletado: " + deletado);
+        // Criando e cadastrando um segundo treino
+        String nomeTreino2 = "Treino de Cardio";
+        String descricaoTreino2 = "Foco em resistência e cardio";
+        List<Exercicio> exerciciosTreino2 = new ArrayList<>();
+        Instrutor instrutor2 = new Instrutor("Joana Pereira", "0321413", "8498933","joana@exemplo.com");
+        Date diaTreino2 = new Date();
 
-        // Teste de buscarTodos após exclusão
-        System.out.println("\nTestando busca após exclusão:");
-        todosExercicios = exercicioController.buscarTodos();
-        for (Exercicio e : todosExercicios) {
-            System.out.println("Exercício ID: " + e.getId() + " - Tipo: " + e.getTipoExercicio().getNome() + " - Repetições: " + e.getRepeticoes() + ", Séries: " + e.getSeries());
+        Treino treino2 = treinoController.cadastrar(nomeTreino2, descricaoTreino2, exerciciosTreino2, instrutor2, diaTreino2);
+        if (treino2 != null) {
+            System.out.println("Treino cadastrado com sucesso: " + treino2.getNome());
+        } else {
+            System.out.println("Erro ao cadastrar o treino.");
         }
+
+        // Listando todos os treinos cadastrados
+        List<Treino> todosTreinos = treinoController.buscarTodos();
+        System.out.println("\nLista de todos os treinos:");
+        for (Treino treino : todosTreinos) {
+            System.out.println("ID: " + treino.getId() + ", Nome: " + treino.getNome() + ", Descrição: " + treino.getDescricao() + ", Instrutor: " + treino.getInstrutor());
+        }
+
+        // Deletando o primeiro treino cadastrado
+        Treino treinoDeletado = treinoController.deletarTreino(treino1.getId());
+        if (treinoDeletado != null) {
+            System.out.println("\nTreino deletado com sucesso: " + treinoDeletado.getNome());
+        } else {
+            System.out.println("Erro ao deletar o treino.");
+        }
+
+        // Listando todos os treinos novamente após a exclusão
+        todosTreinos = treinoController.buscarTodos();
+        System.out.println("\nLista de todos os treinos após exclusão:");
+        for (Treino treino : todosTreinos) {
+            System.out.println("ID: " + treino.getId() + ", Nome: " + treino.getNome() + ", Descrição: " + treino.getDescricao());
     }
+}
 }
