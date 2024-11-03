@@ -54,9 +54,23 @@ public class UsuarioRepository {
 
     }
 
+
     public Boolean existe(Integer id){
         return usuarios.get(id) != null;
     }
+
+
+    public Usuario existe(String email){
+        for (Map.Entry<Integer, Usuario> entry : usuarios.entrySet()){
+            Usuario usuario = entry.getValue();
+            if (usuario.getEmail() == email){
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+
 
     public List<Usuario> buscarTodosUsuarios() {
 

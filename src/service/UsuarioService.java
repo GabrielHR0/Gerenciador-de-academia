@@ -32,6 +32,16 @@ public class UsuarioService {
 
     }
 
+    public boolean existe(String email){
+
+        return usuarioRepository.existe(email) != null;
+    }
+
+    public Usuario buscarPorEmail(String email){
+
+        return usuarioRepository.existe(email);
+    }
+
     public List<Usuario> buscarTodosUsuarios(){
         if (!this.usuarioRepository.getUsuarios().isEmpty()){
             return usuarioRepository.buscarTodosUsuarios();
