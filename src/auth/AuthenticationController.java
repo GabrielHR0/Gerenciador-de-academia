@@ -11,14 +11,14 @@ public class AuthenticationController {
     private GerenciarSessao sessao;
 
     private AuthenticationController(AuthenticationService authenticationService, GerenciarSessao sessao){
-        this.authenticationService = authenticationService;
-        this.sessao = sessao;
+        this.authenticationService = AuthenticationService.getInstancia();
+        this.sessao = GerenciarSessao.getInstancia();
     }
 
     public static AuthenticationController getInstancia(){
 
         if(instancia==null){
-            instancia = new AuthenticationController(AuthenticationService.getInstancia(), GerenciarSessao.getInstancia());
+            instancia = new AuthenticationController( );
         }
         return instancia;
     }

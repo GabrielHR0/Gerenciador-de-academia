@@ -8,13 +8,13 @@ public class AuthenticationService {
     private static AuthenticationService instancia;
     private final UsuarioController usuarioController;
 
-    private AuthenticationService(UsuarioController usuarioController) {
-        this.usuarioController = usuarioController;
+    private AuthenticationService() {
+        this.usuarioController = UsuarioController.getInstancia();
     }
 
     public static AuthenticationService getInstancia() {
         if (instancia == null){
-            instancia = new AuthenticationService(UsuarioController.getInstancia());
+            instancia = new AuthenticationService();
         }
 
         return instancia;
