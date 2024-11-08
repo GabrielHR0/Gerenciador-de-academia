@@ -8,15 +8,14 @@ import repository.UsuarioRepository;
 public class UsuarioService {
     
     private static UsuarioService instancia;
-    private final UsuarioRepository usuarioRepository;
 
-    private UsuarioService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
+    private UsuarioService() {
+
     }
 
     public static UsuarioService getInstancia() {
         if (instancia == null) {
-            instancia = new UsuarioService(UsuarioRepository.getInstancia());
+            instancia = new UsuarioService();
         }
         return instancia;
     }
@@ -24,7 +23,7 @@ public class UsuarioService {
     public Usuario cadastrarUsuario(String email, String senha) {
 
         Usuario novoUsuario = new Usuario(email, senha);
-        if (usuarioRepository.salvar(novoUsuario) != null) {
+        if (UsuarioRepository.getInstancia().salvar(novoUsuario) != null) {
             return novoUsuario;
         }
 
@@ -34,17 +33,17 @@ public class UsuarioService {
 
     public boolean existe(String email){
 
-        return usuarioRepository.existe(email) != null;
+        return UsuarioRepository.getInstancia().existe(email) != null;
     }
 
     public Usuario buscarPorEmail(String email){
 
-        return usuarioRepository.existe(email);
+        return UsuarioRepository.getInstancia().existe(email);
     }
 
     public List<Usuario> buscarTodosUsuarios(){
-        if (!this.usuarioRepository.getUsuarios().isEmpty()){
-            return usuarioRepository.buscarTodosUsuarios();
+        if (!this.UsuarioRepository.getInstancia().getUsuarios().isEmpty()){
+            return UsuarioRepository.getInstancia().buscarTodosUsuarios();
         }
 
         return null;
@@ -52,8 +51,8 @@ public class UsuarioService {
 
     public Usuario deletarUsuario(Integer id){
 
-        if (usuarioRepository.existe(id)) {
-            return usuarioRepository.deletar(id);
+        if (UsuarioRepository.getInstancia().existe(id)) {
+            return UsuarioRepository.getInstancia().deletar(id);
         }
 
         return null;

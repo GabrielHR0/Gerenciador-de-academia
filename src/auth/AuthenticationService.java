@@ -6,10 +6,9 @@ import model.Usuario;
 public class AuthenticationService {
     
     private static AuthenticationService instancia;
-    private final UsuarioController usuarioController;
 
     private AuthenticationService() {
-        this.usuarioController = UsuarioController.getInstancia();
+
     }
 
     public static AuthenticationService getInstancia() {
@@ -22,16 +21,16 @@ public class AuthenticationService {
 
     public Usuario cadastrar(String email, String senha){
         
-        if (usuarioController.existe(email)){
+        if (UsuarioController.getInstancia().existe(email)){
             throw new IllegalArgumentException("Email já cadastrado.");
         }
-        return usuarioController.cadastrar(email, senha);
+        return UsuarioController.getInstancia().cadastrar(email, senha);
 
     }
 
     public Usuario login(String email, String senha){
 
-        Usuario usuarioEncontrado = usuarioController.buscarPorEmail(email);
+        Usuario usuarioEncontrado = UsuarioController.getInstancia().buscarPorEmail(email);
 
         if (usuarioEncontrado == null) {
             throw new IllegalArgumentException("Usuário não existe.");

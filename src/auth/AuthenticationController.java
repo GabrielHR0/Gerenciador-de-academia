@@ -7,12 +7,9 @@ import model.Usuario;
 public class AuthenticationController {
     
     private static AuthenticationController instancia;
-    private final AuthenticationService authenticationService;
-    private GerenciarSessao sessao;
 
-    private AuthenticationController(AuthenticationService authenticationService, GerenciarSessao sessao){
-        this.authenticationService = AuthenticationService.getInstancia();
-        this.sessao = GerenciarSessao.getInstancia();
+    private AuthenticationController(){
+
     }
 
     public static AuthenticationController getInstancia(){
@@ -26,7 +23,7 @@ public class AuthenticationController {
     public Usuario cadastrar(String email, String senha){
 
         try{
-            return authenticationService.cadastrar(email, senha);
+            return AuthenticationService.getInstancia().cadastrar(email, senha);
         } 
         catch(IllegalArgumentException e){
             throw e;
@@ -36,8 +33,8 @@ public class AuthenticationController {
     public void login(String email, String senha){
 
         try {
-            Usuario usuariologado = authenticationService.login(email, senha);
-            sessao.iniciarSessao(usuariologado.getId());
+            Usuario usuariologado = AuthenticationService.getInstancia().login(email, senha);
+            GerenciarSessao.getInstancia().iniciarSessao(usuariologado.getId());
 
         } catch (IllegalArgumentException e) {
             throw e;

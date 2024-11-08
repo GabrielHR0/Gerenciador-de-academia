@@ -9,37 +9,36 @@ import service.UsuarioService;
 public class UsuarioController {
     
     private static UsuarioController instancia;
-    private final UsuarioService usuarioService;
 
-    private UsuarioController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
+    private UsuarioController() {
+
     }
 
     public static UsuarioController getInstancia(){
         if (instancia == null){
-            instancia = new UsuarioController(UsuarioService.getInstancia());
+            instancia = new UsuarioController();
         }
         return instancia;
     }
 
     public Usuario cadastrar(String email, String senha) {
 
-        return usuarioService.cadastrarUsuario(email, senha);
+        return UsuarioService.getInstancia().cadastrarUsuario(email, senha);
     }
 
     public boolean existe(String email){
         
-        return usuarioService.existe(email);
+        return UsuarioService.getInstancia().existe(email);
     }
 
     public Usuario buscarPorEmail(String email){
         
-        return usuarioService.buscarPorEmail(email);
+        return UsuarioService.getInstancia().buscarPorEmail(email);
     }
 
     public List<Usuario> buscarTodos() {
         
-        return usuarioService.buscarTodosUsuarios();
+        return UsuarioService.getInstancia().buscarTodosUsuarios();
     }
 
 
