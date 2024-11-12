@@ -1,38 +1,43 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Contrato {
-    private Integer idContrato;
-    private Aluno aluno;
+    private Integer id;
+    private Integer alunoid;
     private PlanoAssinatura planoAssinatura;
-    private Date dataInicio;
-    private Date dataFim;
+    private LocalDate dataInicio;
+    private LocalDate dataFim;
 
     // Construtor
-    public Contrato(Integer idContrato, Aluno aluno, PlanoAssinatura planoAssinatura, Date dataInicio, Date dataFim) {
-        this.idContrato = idContrato;
-        this.aluno = aluno;
+    public Contrato(Integer id, Integer alunoid, PlanoAssinatura planoAssinatura, LocalDate dataInicio, LocalDate dataFim) {
+        this.id = id;
+        this.alunoid = alunoid;
         this.planoAssinatura = planoAssinatura;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
     }
 
+    public Contrato(LocalDate dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+
     // Getters e Setters
-    public Integer getIdContrato() {
-        return idContrato;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdContrato(Integer idContrato) {
-        this.idContrato = idContrato;
+    public void setId(Integer contratoid) {
+        this.id = contratoid;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public Integer getAlunoid() {
+        return alunoid;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setAlunoid(Integer alunoid) {
+        this.alunoid = alunoid;
     }
 
     public PlanoAssinatura getPlanoAssinatura() {
@@ -43,27 +48,27 @@ public class Contrato {
         this.planoAssinatura = planoAssinatura;
     }
 
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public LocalDate getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;
     }
 
     @Override
     public String toString() {
         return "Contrato{" +
-               "idContrato=" + idContrato +
-               ", aluno=" + aluno +
+               "idContrato=" + id +
+               ", aluno=" + alunoid +
                ", planoAssinatura=" + planoAssinatura +
                ", dataInicio=" + dataInicio +
                ", dataFim=" + dataFim +

@@ -2,14 +2,14 @@ package model;
 
 public class PlanoAssinatura {
     private Integer idPlano;
-    private String descricao;
+    private String nome;
     private Double valor;
     private Integer duracaoMeses;
 
     
-    public PlanoAssinatura(Integer idPlano, String descricao, Double valor, Integer duracaoMeses) {
+    public PlanoAssinatura(Integer idPlano, String nome, Double valor, Integer duracaoMeses) {
         this.idPlano = idPlano;
-        this.descricao = descricao;
+        this.nome = nome;
         this.valor = valor;
         this.duracaoMeses = duracaoMeses;
     }
@@ -23,12 +23,12 @@ public class PlanoAssinatura {
         this.idPlano = idPlano;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Double getValor() {
@@ -51,7 +51,7 @@ public class PlanoAssinatura {
     public String toString() {
         return "PlanoAssinatura{" +
                "idPlano=" + idPlano +
-               ", descricao='" + descricao + '\'' +
+               ", descricao='" + nome + '\'' +
                ", valor=" + valor +
                ", duracaoMeses=" + duracaoMeses +
                '}';

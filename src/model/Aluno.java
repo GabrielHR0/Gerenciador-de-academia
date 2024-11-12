@@ -9,10 +9,33 @@ public class Aluno extends Pessoa{
         super(nome, cpf, telefone, email);
     }
 
-    private Long matricula;
+    private Integer matricula;
     private LocalDate dataMatricula;
+    private Integer contratoAtualId;
 
-    private List<Contrato> contratos;
 
-    
+    public Integer getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(Integer matricula) {
+        this.matricula = matricula;
+    }
+
+    public LocalDate getDataMatricula() {
+        return dataMatricula;
+    }
+
+    public void setDataMatricula(LocalDate dataMatricula) {
+        this.dataMatricula = dataMatricula;
+    }
+
+    public Integer getContratoAtualId() {
+        return contratoAtualId;
+    }
+
+    public void setContratoAtualId(Integer contratoAtualId) {
+        this.contratoAtualId = contratoAtualId;
+    }
+
 }

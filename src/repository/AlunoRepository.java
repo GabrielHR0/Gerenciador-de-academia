@@ -10,11 +10,22 @@ import model.Usuario;
 
 public class AlunoRepository {
 
+    private static AlunoRepository instancia;
+
     private Map<Integer, Aluno> alunos = new HashMap<>();
     private Integer alunoId = 1;
 
-    public AlunoRepository(){
+    private AlunoRepository(){
 
+    }
+
+    public static AlunoRepository getInstancia(){
+        
+        if (instancia == null){
+            instancia = new AlunoRepository();
+        }
+        
+        return instancia;
     }
 
     public Aluno salvar(Aluno novoAluno){

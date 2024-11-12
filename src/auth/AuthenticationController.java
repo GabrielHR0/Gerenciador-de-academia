@@ -43,7 +43,7 @@ public class AuthenticationController {
 
     public void logout(){
 
-        sessao.encerrarSessao();
+        GerenciarSessao.getInstancia().encerrarSessao();
     }
 
 }

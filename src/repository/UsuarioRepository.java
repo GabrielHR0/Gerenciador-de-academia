@@ -60,17 +60,16 @@ public class UsuarioRepository {
     }
 
 
-    public Usuario existe(String email){
-        for (Map.Entry<Integer, Usuario> entry : usuarios.entrySet()){
+    public Usuario existe(String email) {
+        for (Map.Entry<Integer, Usuario> entry : usuarios.entrySet()) {
             Usuario usuario = entry.getValue();
-            if (usuario.getEmail() == email){
+            if (usuario.getEmail().equals(email)) {
                 return usuario;
             }
         }
-        return null;
+        return null; 
     }
-
-
+    
 
     public List<Usuario> buscarTodosUsuarios() {
 

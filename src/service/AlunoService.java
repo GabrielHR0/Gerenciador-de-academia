@@ -8,12 +8,25 @@ import repository.AlunoRepository;
 
 public class AlunoService {
     
-    private AlunoRepository alunoRepository;
+    private static AlunoService instancia;
+
+    private AlunoService(){
+
+    }
+
+    public static AlunoService getInstancia(){
+
+        if (instancia == null){
+            instancia = new AlunoService();
+        }
+
+        return instancia;
+    }
 
     public Aluno cadastrarPessoa(String nome, String cpf, String telefone, String email){ 
 
         Aluno novoAluno = new Aluno(nome, cpf, telefone, email);
-        if (alunoRepository.salvar(novoAluno) != null){
+        if (AlunoRepository.getInstancia().salvar(novoAluno) != null){
             return novoAluno;
         }
         return null;
@@ -22,8 +35,8 @@ public class AlunoService {
 
 
     public List<Aluno> buscarTodosAlunos(){
-        if (!this.alunoRepository.getAlunos().isEmpty()){
-            return alunoRepository.buscarTodosAlunos();
+        if (!AlunoRepository.getInstancia().getAlunos().isEmpty()){
+            return AlunoRepository.getInstancia().buscarTodosAlunos();
         }
 
         return null;
@@ -31,8 +44,8 @@ public class AlunoService {
 
     public Aluno deletarUsuario(Integer id){
 
-        if (alunoRepository.existe(id)) {
-            return alunoRepository.deletar(id);
+        if (AlunoRepository.getInstancia().existe(id)) {
+            return AlunoRepository.getInstancia().deletar(id);
         }
 
         return null;

@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Pessoa {
+public class Pessoa {
 
     private Integer id;
     private String nomeCompleto;
