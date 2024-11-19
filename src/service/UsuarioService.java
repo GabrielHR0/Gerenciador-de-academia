@@ -39,10 +39,10 @@ public class UsuarioService {
         return null;
     }
 
-    public void AlunoUsuarioLink(Usuario usuario, Aluno aluno){
+    public void PessoaUsuarioLink (Usuario usuario, Pessoa pessoa){
 
-        usuario.setAlunoid() = aluno.getId();
-
+        usuario.setPessoaId() = pessoa.getId();
+    
     }
 
 
