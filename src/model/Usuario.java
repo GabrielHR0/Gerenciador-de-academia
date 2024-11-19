@@ -6,7 +6,7 @@ public class Usuario{
     private String email;
     private String senha;
 
-    private Pessoa pessoa;
+    private Intger pessoaId;
 
     public Usuario(String email, String senha) {
         this.email = email;
@@ -39,12 +39,12 @@ public class Usuario{
         this.senha = senha;
     }
     
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Integer getPessoaId() {
+        return pessoaId;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPessoaId(Integer pessoaId) {
+        this.pessoaId = pessoaId;
     }
     
     @Override

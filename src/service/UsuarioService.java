@@ -21,23 +21,30 @@ public class UsuarioService {
     }
 
     public Usuario cadastrarUsuario(String email, String senha) {
-        // Verifica se o usuário já existe com o mesmo e-mail
+        
         if (UsuarioRepository.getInstancia().existe(email) != null) {
-            // Retorna null se já existir um usuário com esse email
+            
             System.out.println("Usuário com o e-mail " + email + " já existe.");
             return null;
         }
         
-        // Se o usuário não existe, cria um novo
+        
         Usuario novoUsuario = new Usuario(email, senha);
         
-        // Tenta salvar o novo usuário no repositório
+        
         if (UsuarioRepository.getInstancia().salvar(novoUsuario) != null) {
             return novoUsuario;
         }
     
         return null;
     }
+
+    public void AlunoUsuarioLink(Usuario usuario, Aluno aluno){
+
+        usuario.setAlunoid() = aluno.getId();
+
+    }
+
 
     public boolean existe(String email){
 

@@ -6,7 +6,9 @@ public class Bimestral implements PlanoAssinaturaStrategy {
 
     @Override
     public double calcularPreco() {
-        return 180.0 * obterDuracaoMeses() * 0.95; 
+        double valorMensal = TabelaPrecoService.getInstancia().buscarTabelaPorId(tabelaPrecoId).getValorMensal();
+        double desconto = TabelaPrecoService.getInstancia().buscarTabelaPorId(tabelaPrecoId).getValorMensal();
+        return valorMensal * obterDuracaoMeses() - (desconto * obterDuracaoMeses());
     }
 
     @Override

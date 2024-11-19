@@ -6,7 +6,6 @@ import subscription.PlanoAssinaturaStrategy;
 public class Trimestral implements PlanoAssinaturaStrategy{
     @Override
     public double calcularPreco(Integer tabelaPrecoId) {
-
         double valorMensal = TabelaPrecoService.getInstancia().buscarTabelaPorId(tabelaPrecoId).getValorMensal();
         double desconto = TabelaPrecoService.getInstancia().buscarTabelaPorId(tabelaPrecoId).getValorMensal();
         return valorMensal * obterDuracaoMeses() - (desconto * obterDuracaoMeses());
