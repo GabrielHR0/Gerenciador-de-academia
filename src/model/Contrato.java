@@ -1,6 +1,9 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Contrato {
     private Integer id;
@@ -8,6 +11,8 @@ public class Contrato {
     private PlanoAssinatura planoAssinatura;
     private LocalDate dataInicio;
     private LocalDate dataFim;
+
+    //private List<Observer> observers = new ArrayList<Observer>();
 
     // Construtor
     public Contrato(Integer id, Integer alunoid, PlanoAssinatura planoAssinatura, LocalDate dataInicio, LocalDate dataFim) {
@@ -21,6 +26,27 @@ public class Contrato {
     public Contrato(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
+
+
+    //Observer methods
+
+    /*@Override
+    public void addObserver(Observer observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        this.observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers){
+            observer.update(this);
+        }
+    }
+    */
 
 
     // Getters e Setters

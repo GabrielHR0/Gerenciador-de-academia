@@ -3,6 +3,8 @@ package model;
 import java.time.LocalDate;
 import java.util.List;
 
+
+
 public class Aluno extends Pessoa{
 
     public Aluno(String nome, String cpf, String telefone, String email) {
@@ -14,6 +16,15 @@ public class Aluno extends Pessoa{
     private Integer contratoAtualId;
 
 
+    //Observer methods
+    /*@Override
+    public void update( ){
+
+    }*/
+
+
+
+    //getters and setters
     public Integer getMatricula() {
         return matricula;
     }

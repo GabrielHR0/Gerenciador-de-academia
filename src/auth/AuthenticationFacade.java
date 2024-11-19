@@ -13,20 +13,20 @@ import org.json.simple.parser.ParseException;
 import controller.UsuarioController;
 import model.Usuario;
 
-public class Authentication {
+public class AuthenticationFacade {
     
-    private static Authentication instancia;
+    private static AuthenticationFacade instancia;
     private final String caminhoArquivo = "src/auth/usuarios.json";
 
     public AuthenticationController controller = AuthenticationController.getInstancia();
     public GerenciarSessao sessao = GerenciarSessao.getInstancia();
 
-    private Authentication() {
+    private AuthenticationFacade() {
     }
 
-    public static Authentication getInstancia() {
+    public static AuthenticationFacade getInstancia() {
         if (instancia == null) {
-            instancia = new Authentication();
+            instancia = new AuthenticationFacade();
         }
         return instancia;
     }

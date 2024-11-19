@@ -1,20 +1,23 @@
 package model;
 
+import subscription.PlanoAssinaturaStrategy;
+
 public class PlanoAssinatura {
     private Integer idPlano;
     private String nome;
     private Double valor;
     private Integer duracaoMeses;
+    private PlanoAssinaturaStrategy planoAssinaturaStrategy;
 
-    
-    public PlanoAssinatura(Integer idPlano, String nome, Double valor, Integer duracaoMeses) {
-        this.idPlano = idPlano;
-        this.nome = nome;
-        this.valor = valor;
-        this.duracaoMeses = duracaoMeses;
+    // Construtor
+    public PlanoAssinatura(String nome, PlanoAssinaturaStrategy planoAssinaturaStrategy) {
+        this.nome = planoAssinaturaStrategy.descricao();
+        this.planoAssinaturaStrategy = planoAssinaturaStrategy;
+        this.valor = planoAssinaturaStrategy.calcularPreco(); 
+        this.duracaoMeses = planoAssinaturaStrategy.obterDuracaoMeses(); 
     }
 
-    // Getters e Setters
+    // Métodos getters e setters
     public Integer getIdPlano() {
         return idPlano;
     }
@@ -47,13 +50,9 @@ public class PlanoAssinatura {
         this.duracaoMeses = duracaoMeses;
     }
 
-    @Override
-    public String toString() {
-        return "PlanoAssinatura{" +
-               "idPlano=" + idPlano +
-               ", descricao='" + nome + '\'' +
-               ", valor=" + valor +
-               ", duracaoMeses=" + duracaoMeses +
-               '}';
+    public void setPlanoAssinaturaStrategy(PlanoAssinaturaStrategy planoAssinaturaStrategy) {
+        this.planoAssinaturaStrategy = planoAssinaturaStrategy;
+        this.valor = planoAssinaturaStrategy.calcularPreco();
+        this.duracaoMeses = planoAssinaturaStrategy.obterDuracaoMeses();
     }
 }

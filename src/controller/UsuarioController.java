@@ -36,6 +36,11 @@ public class UsuarioController {
         return UsuarioService.getInstancia().buscarPorEmail(email);
     }
 
+    public Usuario buscarPorId(Integer id){
+
+        return UsuarioService.getInstancia().buscarPorId(id);
+    }
+
     public List<Usuario> buscarTodos() {
         
         return UsuarioService.getInstancia().buscarTodosUsuarios();

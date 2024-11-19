@@ -49,6 +49,12 @@ public class UsuarioService {
         return UsuarioRepository.getInstancia().existe(email);
     }
 
+    public Usuario buscarPorId(Integer id){
+
+        return UsuarioRepository.getInstancia().buscarUsuarioPorId(id);
+        
+    }
+
     public List<Usuario> buscarTodosUsuarios(){
         if (!UsuarioRepository.getInstancia().getUsuarios().isEmpty()){
             return UsuarioRepository.getInstancia().buscarTodosUsuarios();

@@ -2,6 +2,9 @@ package auth;
 
 import java.time.LocalDate;
 
+import controller.UsuarioController;
+import model.Usuario;
+
 public class GerenciarSessao {
     
     private Sessao sessaoAtual;
@@ -44,6 +47,9 @@ public class GerenciarSessao {
         return this.sessaoAtual.getUsuarioLogadoId();
     }
 
+    public Usuario getUsuarioLogado(Integer id){
+        return UsuarioController.getInstancia().buscarPorId(getUsuarioLogadoId());
+    }
 
     public Sessao getSessaoAtual() {
         return sessaoAtual;
