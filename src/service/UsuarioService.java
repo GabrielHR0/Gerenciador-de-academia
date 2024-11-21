@@ -39,9 +39,12 @@ public class UsuarioService {
         return null;
     }
 
-    public void PessoaUsuarioLink (Usuario usuario, Pessoa pessoa){
+    public void PessoaUsuarioLink (Integer usuarioId, Integer pessoaId){
 
-        usuario.setPessoaId() = pessoa.getId();
+        Usuario usuario = UsuarioRepository.getInstancia().buscarUsuarioPorId(usuarioId);
+        if (usuario!= null){
+            usuario.setPessoaId(pessoaId);
+        }
     
     }
 

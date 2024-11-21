@@ -10,7 +10,7 @@ public class TabelaPrecoRepository {
     private static TabelaPrecoRepository instancia;
 
     private Map<Integer, TabelaPreco> precos = new HashMap<>();
-    private Integer precoId = 1;
+    private Integer precoId = 0;
 
     private TabelaPrecoRepository() {
     
@@ -25,7 +25,8 @@ public class TabelaPrecoRepository {
 
     public TabelaPreco addTabelaPreco(TabelaPreco novoPreco){
         
-        novoPreco.setId(this.precoId++);
+        this.precoId++;
+        novoPreco.setId(this.precoId);
         precos.put(this.precoId, novoPreco);
         return novoPreco;
 

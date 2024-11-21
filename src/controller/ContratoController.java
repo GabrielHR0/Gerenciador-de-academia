@@ -7,13 +7,10 @@ import service.ContratoService;
 
 public class ContratoController {
 
-    // Instância única (Singleton)
     private static ContratoController instancia;
 
-    // Construtor privado para evitar a criação de instâncias fora da classe
     private ContratoController() {}
 
-    // Método para obter a instância única do controller
     public static ContratoController getInstancia() {
         if (instancia == null) {
             instancia = new ContratoController();
@@ -23,6 +20,12 @@ public class ContratoController {
 
     public Contrato cadastrar() {
         return ContratoService.getInstancia().cadastrarContrato();
+    }
+
+    public Contrato buscarPorId(Integer id) {
+        
+        return ContratoService.getInstancia().buscarPorId(id);
+        
     }
 
     public Contrato contratar(Contrato contrato, Aluno aluno) {

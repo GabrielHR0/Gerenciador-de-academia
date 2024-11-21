@@ -7,6 +7,11 @@ public class TabelaPreco {
     private double desconto;
 
 
+    public TabelaPreco(double valorMensal, double desconto) {
+        this.valorMensal = valorMensal;
+        this.desconto = desconto;
+    }
+    
     public double getDesconto() {
         return desconto;
     }

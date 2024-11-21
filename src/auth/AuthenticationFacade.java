@@ -16,6 +16,7 @@ import model.Usuario;
 public class AuthenticationFacade {
     
     private static AuthenticationFacade instancia;
+    
     private final String caminhoArquivo = "src/auth/usuarios.json";
 
     public AuthenticationController controller = AuthenticationController.getInstancia();

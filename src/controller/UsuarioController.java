@@ -41,6 +41,10 @@ public class UsuarioController {
         return UsuarioService.getInstancia().buscarPorId(id);
     }
 
+    public void PessoaUsuarioLink(Integer usuario, Integer pessoa){
+        UsuarioService.getInstancia().PessoaUsuarioLink(usuario, pessoa);
+    }
+
     public List<Usuario> buscarTodos() {
         
         return UsuarioService.getInstancia().buscarTodosUsuarios();

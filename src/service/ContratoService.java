@@ -41,19 +41,11 @@ public class ContratoService {
 
     }
 
-    /*(public Contrato associarContratoAoAluno(Contrato contrato, Aluno aluno) {
+    public Contrato buscarPorId(Integer id) {
 
-        if (contrato == null) {
-            throw new IllegalArgumentException("Contrato não pode ser nulo.");
-        }
-        if (aluno == null) {
-            throw new IllegalArgumentException("Aluno não pode ser nulo.");
-        }
-
-        contrato.setAlunoid(aluno.getId());
-
-        return contrato;
-    }*/
+        return ContratoRepository.getInstancia().buscarContratoPorId(id);
+        
+    }
 
     public Contrato definirContratoAtual(Contrato contrato, Aluno aluno){
         if (contrato == null) {

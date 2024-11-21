@@ -21,14 +21,11 @@ public class TabelaPrecoService {
     }
 
 
-    public TabelaPreco adicionarTabelaPreco(TabelaPreco tabelaPreco) {
-        if (tabelaPreco == null) {
-            throw new IllegalArgumentException("Tabela de preços não pode ser nula.");
-        }
-        if (tabelaPreco.getValorMensal() <= 0) {
-            throw new IllegalArgumentException("O valor da tabela de preços deve ser maior que zero.");
-        }
+    public TabelaPreco adicionarTabelaPreco(double precoMensal, double descontoMensal) {
+        
+        TabelaPreco tabelaPreco = new TabelaPreco(precoMensal, descontoMensal);
         return TabelaPrecoRepository.getInstancia().addTabelaPreco(tabelaPreco);
+        
     }
 
 

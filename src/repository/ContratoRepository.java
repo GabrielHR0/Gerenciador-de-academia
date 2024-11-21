@@ -13,7 +13,7 @@ public class ContratoRepository{
     private static ContratoRepository instancia;
 
     private Map<Integer, Contrato> contratos = new HashMap<>();
-    private Integer contratoid = 1;
+    private Integer contratoid = 0;
 
     private ContratoRepository() {
         
@@ -30,13 +30,14 @@ public class ContratoRepository{
 
     public Contrato salvar(Contrato novoContrato){
 
-        novoContrato.setId(this.contratoid++);
+        this.contratoid++;
+        novoContrato.setId(this.contratoid);
         contratos.put(this.contratoid, novoContrato);
         return novoContrato;
 
     }
 
-    public Contrato buscarUsuarioPorId(Integer id) {
+    public Contrato buscarContratoPorId(Integer id) {
             
         return contratos.get(id);
 

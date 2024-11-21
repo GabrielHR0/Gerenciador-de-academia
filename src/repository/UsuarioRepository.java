@@ -13,7 +13,7 @@ public class UsuarioRepository {
     private static UsuarioRepository instancia;
 
     private Map<Integer, Usuario> usuarios = new HashMap<>();
-    private Integer usuarioId = 1;
+    private Integer usuarioId = 0;
 
     private UsuarioRepository() {
         
@@ -30,7 +30,8 @@ public class UsuarioRepository {
 
     public Usuario salvar(Usuario novoUsuario){
 
-        novoUsuario.setId(this.usuarioId++);
+        this.usuarioId++;
+        novoUsuario.setId(this.usuarioId);
         usuarios.put(this.usuarioId, novoUsuario);
         return novoUsuario;
 

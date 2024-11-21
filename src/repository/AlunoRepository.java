@@ -13,7 +13,7 @@ public class AlunoRepository {
     private static AlunoRepository instancia;
 
     private Map<Integer, Aluno> alunos = new HashMap<>();
-    private Integer alunoId = 1;
+    private Integer alunoId = 0;
 
     private AlunoRepository(){
 
@@ -30,7 +30,8 @@ public class AlunoRepository {
 
     public Aluno salvar(Aluno novoAluno){
 
-        novoAluno.setId(this.alunoId++);
+        this.alunoId++;
+        novoAluno.setId(this.alunoId);
         alunos.put(novoAluno.getId(), novoAluno);
 
         return novoAluno;
