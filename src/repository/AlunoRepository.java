@@ -49,7 +49,7 @@ public class AlunoRepository {
             
     }
 
-    public Aluno buscarUsuarioPorId(Integer id) {
+    public Aluno buscarAlunoPorId(Integer id) {
             
         return alunos.get(id);
 
