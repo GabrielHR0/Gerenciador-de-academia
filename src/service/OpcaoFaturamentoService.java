@@ -1,7 +1,9 @@
 package service;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import controller.AlunoController;
 import payment.OpcaoFaturamento;
 import repository.OpcaoFaturamentoRepository;
 
@@ -20,9 +22,22 @@ public class OpcaoFaturamentoService {
     }
 
     // Método para cadastrar uma nova opção de faturamento
-    public OpcaoFaturamento cadastrarOpcaoFaturamento(String descricao, Double valor) {
-        OpcaoFaturamento novaOpcao = new OpcaoFaturamento(descricao, valor);
-        return OpcaoFaturamentoRepository.getInstancia().salvar(novaOpcao);
+    public OpcaoFaturamento cadastrarOpcaoFaturamento(int diaVencimento, Integer alunoId) {
+
+        OpcaoFaturamento novaOpcao = new OpcaoFaturamento(diaVencimento);
+        novaOpcao.setDataFechamento(diaVencimento - 10);
+
+        OpcaoFaturamentoRepository.getInstancia().salvar(novaOpcao);
+
+        AlunoController.getInstancia().buscarPorId(alunoId).setOpcaoFaturamentoId(novaOpcao.getId());
+
+        return novaOpcao;
+
+    }
+
+    public OpcaoFaturamento BuscarFaturamentoPorAlunoId(Integer alunoId){
+       Integer opcaoDoAlunoId  = AlunoController.getInstancia().buscarPorId(alunoId).getOpcaoFaturamentoId();
+       return OpcaoFaturamentoRepository.getInstancia().buscarPorId(opcaoDoAlunoId);
     }
 
     // Buscar todas as opções de faturamento
@@ -49,7 +64,9 @@ public class OpcaoFaturamentoService {
     }
 
     // Buscar uma opção de faturamento por ID
-    public OpcaoFaturamento buscarOpcaoPorId(Integer id) {
+    public OpcaoFaturamento buscarPorId(Integer id) {
         return OpcaoFaturamentoRepository.getInstancia().buscarPorId(id);
     }
+
+
 }

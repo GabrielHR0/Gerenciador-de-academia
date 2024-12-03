@@ -33,6 +33,12 @@ public class AlunoService {
 
     }
 
+    public Aluno buscarPorId(Integer id){
+
+        return AlunoRepository.getInstancia().buscarAlunoPorId(id);
+
+    }
+
 
     public List<Aluno> buscarTodosAlunos(){
         if (!AlunoRepository.getInstancia().getAlunos().isEmpty()){

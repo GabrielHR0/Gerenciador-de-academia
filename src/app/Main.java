@@ -1,53 +1,53 @@
 package app;
 
-import auth.AuthenticationFacade;
-import auth.AuthenticationController;
-import auth.GerenciarSessao;
 import controller.AlunoController;
-import controller.ContratoController;
+import controller.FaturaController;
+import controller.OpcaoFaturamentoController;
 import controller.PlanoAssinaturaController;
+import controller.ContratoController;
 import controller.TabelaPrecoController;
-import controller.UsuarioController;
+
 import model.Aluno;
+import model.Fatura;
 import model.Contrato;
 import model.PlanoAssinatura;
-import model.Usuario;
+import payment.OpcaoFaturamento;
 import subscription.TabelaPreco;
-
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        
-        AuthenticationFacade.getInstancia().initRepository();
+        // 1. Criar e cadastrar um aluno
+        Aluno ana = AlunoController.getInstancia().cadastrarAluno("Ana Martins", "123.456.789-00", "987654321", "ana.martins@example.com");
+        System.out.println("Aluno cadastrado: " + ana);
 
-        Usuario anau = UsuarioController.getInstancia().buscarPorEmail("ana.martins@example.com");
-        Aluno ana = AlunoController.getInstancia().cadastrarAluno(null, null, null, "ana.martins@example.com");
-
-        UsuarioController.getInstancia().PessoaUsuarioLink(anau.getId(), ana.getId());
-
+        // 2. Criar contrato para o aluno
         Contrato contratoAna = ContratoController.getInstancia().cadastrar();
         ContratoController.getInstancia().contratar(contratoAna, ana);
+        System.out.println("Contrato criado: " + contratoAna);
 
-        System.out.println(anau);
-
-        System.out.println(UsuarioController.getInstancia().buscarPorId(2));
+        // 3. Criar tabela de preço e plano de assinatura
         TabelaPreco tabela = TabelaPrecoController.getInstancia().criarNovaTabelaPreco(180.0, 0.3);
-        
         PlanoAssinatura plano = PlanoAssinaturaController.getInstancia().cadastrarPlanoAssinatura(3, "Mensal", tabela.getId());
-   
         ContratoController.getInstancia().definirPlano(contratoAna, plano);
 
-        System.out.println(ContratoController.getInstancia().buscarPorId(ana.getContratoAtualId()));
+        // 4. Gerar uma fatura para o aluno
+        System.out.println(plano);
 
-
-        System.out.println(TabelaPrecoController.getInstancia().buscarPorId(1));
-
-
-
-
+        System.out.println("Contrato criado: " + contratoAna);
         
+        OpcaoFaturamento anao = OpcaoFaturamentoController.getInstancia().cadastrarOpcaoFaturamento(15, ana.getId());
 
+        System.out.println(anao.getId());
+
+        OpcaoFaturamentoController.getInstancia().buscarPorId(anao.getId());
+        System.out.println(OpcaoFaturamentoController.getInstancia().buscarFaturamentoPorAlunoId(ana.getId()));
+
+
+        Fatura faturaana = FaturaController.getInstancia().gerarFatura(ana.getId());
+        
+        System.out.println(faturaana);
+        
+       
     }
 }

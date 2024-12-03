@@ -13,18 +13,16 @@ public class Fatura {
     private LocalDate dataDeVencimento;
     private FaturaStatus status;
 
-    private Integer opcaoFaturamentoId;
     private Integer AlunoId;
 
 
-    public Integer getOpcaoFaturamentoId() {
-        return opcaoFaturamentoId;
+    public Fatura(Double valorTotal, LocalDate dataDeFechamento, LocalDate dataDeVencimento, FaturaStatus status) {
+        this.valorTotal = valorTotal;
+        this.dataDeFechamento = dataDeFechamento;
+        this.dataDeVencimento = dataDeVencimento;
+        this.status = status;
     }
-
-    public void setOpcaoFaturamentoId(Integer opcaoFaturamentoId) {
-        this.opcaoFaturamentoId = opcaoFaturamentoId;
-    }
-
+    
     public FaturaStatus getStatus() {
         return status;
     }
@@ -73,5 +71,17 @@ public class Fatura {
     public void setAlunoId(Integer alunoId) {
         AlunoId = alunoId;
     }
+
+    @Override
+    public String toString() {
+        return "Fatura{" +
+                "id=" + id +
+                ", valorTotal=" + valorTotal +
+                ", dataDeFechamento=" + dataDeFechamento +
+                ", dataDeVencimento=" + dataDeVencimento +
+                ", status=" + status +
+                '}';
+    }
+    
 
 }

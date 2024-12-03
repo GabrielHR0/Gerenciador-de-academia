@@ -49,6 +49,8 @@ public class OpcaoFaturamentoRepository {
         return opcoesFaturamento.containsKey(id);
     }
 
+    
+
     public List<OpcaoFaturamento> buscarTodasOpcoes() {
         return new ArrayList<>(opcoesFaturamento.values());
     }

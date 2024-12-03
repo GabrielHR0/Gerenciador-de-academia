@@ -53,5 +53,16 @@ public class PlanoAssinatura {
 
     //public void setPlanoAssinaturaStrategy(PlanoAssinaturaStrategy planoAssinaturaStrategy) {}
         
+    @Override
+    public String toString() {
+        return "PlanoAssinatura{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", valor=" + valor +
+                ", duracaoMeses=" + duracaoMeses +
+                '}';
+    }
+    
+
 
 }

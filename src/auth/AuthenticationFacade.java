@@ -19,8 +19,6 @@ public class AuthenticationFacade {
     
     private final String caminhoArquivo = "src/auth/usuarios.json";
 
-    public AuthenticationController controller = AuthenticationController.getInstancia();
-    public GerenciarSessao sessao = GerenciarSessao.getInstancia();
 
     private AuthenticationFacade() {
     }

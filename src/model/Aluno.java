@@ -14,6 +14,7 @@ public class Aluno extends Pessoa{
     private Integer matricula;
     private LocalDate dataMatricula;
     private Integer contratoAtualId;
+    private Integer opcaoFaturamentoId;
 
 
     //Observer methods
@@ -23,6 +24,14 @@ public class Aluno extends Pessoa{
     }*/
 
 
+
+    public Integer getOpcaoFaturamentoId() {
+        return opcaoFaturamentoId;
+    }
+
+    public void setOpcaoFaturamentoId(Integer opcaoFaturamentoId) {
+        this.opcaoFaturamentoId = opcaoFaturamentoId;
+    }
 
     //getters and setters
     public Integer getMatricula() {

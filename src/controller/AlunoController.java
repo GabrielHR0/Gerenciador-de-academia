@@ -36,4 +36,11 @@ public class AlunoController {
         return AlunoService.getInstancia().deletarUsuario(id);
 
     }
+
+    public Aluno buscarPorId(Integer id){
+
+        return AlunoService.getInstancia().buscarPorId(id);
+
+    }
+
 }
