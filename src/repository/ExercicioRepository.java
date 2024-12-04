@@ -13,7 +13,7 @@ public class ExercicioRepository {
     private static ExercicioRepository instancia; //Singleton
 
     private HashMap<Integer, Exercicio> exercicios = new HashMap<>();
-    private Integer id = 1;
+    private Integer id = 0;
 
     public static ExercicioRepository getInstancia() {
         if(instancia == null){

@@ -5,7 +5,6 @@ import java.util.List;
 import model.Exercicio;
 import model.TipoExercicio;
 import service.ExercicioService;
-import service.UsuarioService;
 
 public class ExercicioController {
     
@@ -24,10 +23,14 @@ public class ExercicioController {
     }
 
     public Exercicio cadastrar(TipoExercicio tipoExercicio, int repeticoes, int serie){
-        return exercicioService.cadastrarExercicio(tipoExercicio, repeticoes, serie);
+        return ExercicioService.getInstancia().cadastrarExercicio(tipoExercicio, repeticoes, serie);
+    }
+
+    public Exercicio buscarPorId(Integer id) {
+        return ExercicioService.getInstancia().buscarPorId(id);
     }
 
     public List<Exercicio> buscarTodos(){
-        return exercicioService.buscarTodosExercicio();
+        return ExercicioService.getInstancia().buscarTodosExercicio();
     }
 }

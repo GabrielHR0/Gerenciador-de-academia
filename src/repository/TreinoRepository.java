@@ -48,7 +48,7 @@ public class TreinoRepository {
         return null;
     }
 
-    public Treino buscarTreinoPorId(Integer id){
+    public Treino buscarPorId(Integer id){
 
         return treinos.get(id);
     }

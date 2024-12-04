@@ -10,17 +10,16 @@ import repository.TreinoRepository;
 
 public class TreinoService {
     
-    private final TreinoRepository treinoRepository;
 
     private static TreinoService instancia;
 
-    private TreinoService(TreinoRepository treinoRepository){
-        this.treinoRepository = treinoRepository;
+    private TreinoService(){
+       
     }
 
     public static TreinoService getInstancia(){
         if(instancia == null){
-            instancia = new TreinoService(TreinoRepository.getInstancia());
+            instancia = new TreinoService();
         }
         return instancia;
     }
@@ -28,7 +27,7 @@ public class TreinoService {
     public Treino cadastrarTreino(String nome, String descricao, List<Exercicio> exercicio, Instrutor instrutor, Date dia){
         
         Treino novoTreino = new Treino(nome, descricao, exercicio, instrutor, dia);
-        if(treinoRepository.salvar(novoTreino) != null){
+        if(TreinoRepository.getInstancia().salvar(novoTreino) != null){
             return novoTreino;
         }
         return null;
@@ -36,15 +35,22 @@ public class TreinoService {
 
     public List<Treino> buscarTodosTreinos(){
 
-        if(!this.treinoRepository.getTreino().isEmpty()){
-            return treinoRepository.buscarTodosTreinos();
+        if(!TreinoRepository.getInstancia().getTreino().isEmpty()){
+            return TreinoRepository.getInstancia().buscarTodosTreinos();
+        }
+        return null;
+    }
+
+    public Treino buscarPorId(Integer id) {
+        if(TreinoRepository.getInstancia().existe(id)){
+            return TreinoRepository.getInstancia().buscarPorId(id);
         }
         return null;
     }
 
     public Treino deletaTreino(Integer id){
-        if(treinoRepository.existe(id)){
-            return treinoRepository.remover(id);
+        if(TreinoRepository.getInstancia().existe(id)){
+            return TreinoRepository.getInstancia().remover(id);
         }
         return null;
     }

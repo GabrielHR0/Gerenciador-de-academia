@@ -9,18 +9,17 @@ import repository.UsuarioRepository;
 
 public class ExercicioService {
 
-    private final ExercicioRepository exercicioRepository;
 
     private static ExercicioService instancia;
 
-    private ExercicioService(ExercicioRepository exercicioRepository){
-        this.exercicioRepository = exercicioRepository;
+    private ExercicioService(){
+
     }
 
     public Exercicio cadastrarExercicio(TipoExercicio tipoExercicio, int repeticoes, int series){
 
         Exercicio novoExercicio = new Exercicio(tipoExercicio, repeticoes, series);
-        if(exercicioRepository.salvar(novoExercicio) != null){
+        if(ExercicioRepository.getInstancia().salvar(novoExercicio) != null){
             return novoExercicio;
         }
         return null;
@@ -29,7 +28,7 @@ public class ExercicioService {
     public static ExercicioService getInstancia(){
         
         if (instancia == null){
-            instancia = new ExercicioService(ExercicioRepository.getInstancia());
+            instancia = new ExercicioService();
 
         }
         return instancia;
@@ -38,15 +37,22 @@ public class ExercicioService {
 
     public List<Exercicio> buscarTodosExercicio(){
 
-        if(!this.exercicioRepository.getExercicio().isEmpty()){
-            return exercicioRepository.buscarTodosExercicios();
+        if(!ExercicioRepository.getInstancia().getExercicio().isEmpty()){
+            return ExercicioRepository.getInstancia().buscarTodosExercicios();
+        }
+        return null;
+    }
+
+    public Exercicio buscarPorId(Integer id) {
+        if(ExercicioRepository.getInstancia().existe(id)){
+            return ExercicioRepository.getInstancia().buscarExercicioporId(id);
         }
         return null;
     }
 
     public Exercicio deletarExercicio(Integer id){
-        if(exercicioRepository.existe(id)){
-            return exercicioRepository.deletar(id);
+        if(ExercicioRepository.getInstancia().existe(id)){
+            return ExercicioRepository.getInstancia().deletar(id);
         }
         return null;
     }
